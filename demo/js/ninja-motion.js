@@ -14,6 +14,14 @@
  The above copyright notice and this permission notice shall be included in all
  copies or substantial portions of the Software.
  */
+function makeTimeoutFunc($obj,launch,effect) {
+    setTimeout(function(){
+        $obj.find('.nm-child-post').removeClass('invisibleThis');
+        $obj.find('.nm-child-post').addClass('visibleThis animated');
+        $obj.find('.nm-child-post').addClass(effect);
+    },launch);
+
+}
 
 (function($){
     $.fn.nnMotion = function(defaultOptions){
@@ -35,6 +43,8 @@
             windowSize = {height: $(window).height(), width: $(window).width()},
             scrollElem = ((navigator.userAgent.toLowerCase().indexOf('webkit') != -1) ? 'body' : 'html');
 
+        /*reset if have child*/
+        $('.nm-child-post').addClass('invisibleThis');
         /*
          * Main method that checks the elements and adds or removes the class(es)
          */
@@ -103,9 +113,21 @@
                             $obj.removeClass(objOptions.removeThisClass);
                             $obj.addClass(objOptions.addThisClass);
                             $obj.addClass(objOptions.effect);
+                            if($obj.find('.nm-child-post').length != 0)
+                            {
+                                var launch = $obj.find('.nm-child-post').data('nm-launch');
+                                var effect = $obj.find('.nm-child-post').data('nm-effect');
+                                makeTimeoutFunc($obj,launch,effect);
+                            }
                         },objOptions.delay);
                     }else
                     {
+                        if($obj.find('.nm-child-post').length != 0)
+                        {
+                            var launch = $obj.find('.nm-child-post').data('nm-launch');
+                            var effect = $obj.find('.nm-child-post').data('nm-effect');
+                            makeTimeoutFunc($obj,launch,effect);
+                        }
                         // remove class
                         $obj.removeClass(objOptions.removeThisClass);
 
