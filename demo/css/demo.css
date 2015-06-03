@@ -1,0 +1,40 @@
+/*Demo CSS by Kelvin Mijaya*/
+
+
+.container
+{
+    width: 800px;
+    min-height: 200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+.custom-div
+{
+    width: 100%;
+    height: auto;
+    text-align: center;
+    margin-bottom: 150px;
+}
+.text-center
+{
+    width: 100%;
+    text-align: center;
+    padding: 50px 0;
+}
+.title-heading
+{
+    color: #333;
+    font-size: 24px;
+    font-family: 'Roboto Condensed', sans-serif;
+    font-weight: 300 !important;
+}
+
+/*add this css*/
+.invisibleThis
+{
+    opacity: 0;
+}
+.visibleThis
+{
+    opacity: 1;
+}

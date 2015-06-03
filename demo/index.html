@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Ninja Motion</title>
+
+    <link href='http://fonts.googleapis.com/css?family=Roboto+Condensed:400,300' rel='stylesheet' type='text/css'>
+    <!--Load Normalize css-->
+    <link rel="stylesheet" href="css/normalize.css" type="text/css"/>
+    <link rel="stylesheet" href="css/animate.css" type="text/css"/>
+    <link rel="stylesheet" href="css/demo.css" type="text/css"/>
+</head>
+<body>
+    <div class="container">
+        <div class="custom-div nm-post">
+            <div class="title-heading">
+                <h4>Default setting in Ninja Motion</h4>
+                <img src="http://dummyimage.com/400x400/d5d5d9/727273.jpg" alt=""/>
+            </div>
+        </div>
+        <div class="custom-div nm-post" data-nm-effect="fadeInLeft">
+            <div class="title-heading">
+                <h4>Jump from left !</h4>
+                <img src="http://dummyimage.com/400x400/d5d5d9/727273.jpg" alt=""/>
+            </div>
+        </div>
+        <div class="custom-div nm-post" data-nm-effect="fadeInRight">
+            <div class="title-heading">
+                <h4>Jump from right !</h4>
+                <img src="http://dummyimage.com/400x400/d5d5d9/727273.jpg" alt=""/>
+            </div>
+        </div>
+        <div class="title-heading">
+             <h4 class="text-center">SKILL : APPEAR ! wait, let make it delay around 3 second</h4>
+        </div>
+        <div class="custom-div nm-post" data-nm-effect="fadeInUp" data-nm-delay="3000">
+            <div class="title-heading">
+                <h4>Sorry, i'll need more AGI stat :(</h4>
+                <img src="http://dummyimage.com/400x400/d5d5d9/727273.jpg" alt=""/>
+            </div>
+        </div>
+        <div class="custom-div nm-post">
+            <div class="title-heading">
+                <h4>Default setting in Ninja Motion</h4>
+                <img src="http://dummyimage.com/400x400/d5d5d9/727273.jpg" alt=""/>
+            </div>
+        </div>
+        <div class="custom-div nm-post">
+            <div class="title-heading">
+                <h4>Default setting in Ninja Motion</h4>
+                <img src="http://dummyimage.com/400x400/d5d5d9/727273.jpg" alt=""/>
+            </div>
+        </div>
+    </div>
+<!--Load JQuery-->
+<script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+<script type="text/javascript" src="js/ninja-motion.js"></script>
+    <!--Load nnMotion-->
+    <script>
+        $('.nm-post').addClass("invisibleThis").nnMotion({
+            addThisClass: 'visibleThis animated',
+            offset: 100,
+            delay :0,
+            effect: "fadeIn"
+        });
+    </script>
+</body>
+</html>
