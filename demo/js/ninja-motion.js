@@ -30,7 +30,7 @@ function makeTimeoutFunc(elemen,objOptions,launch,effect,speed) {
         var options = {
             addThisClass: 'visibleThis animated',
             removeThisClass : 'invisibleThis',
-            speed : '',
+            speed : 'normal-motion',
             offset: 200,
             delay :0,
             repeat: false,
@@ -82,6 +82,8 @@ function makeTimeoutFunc(elemen,objOptions,launch,effect,speed) {
                     attrOptions.delay = $obj.data('nm-delay');
                 if ($obj.data('nm-speed'))
                     attrOptions.speed = $obj.data('nm-speed');
+                if ($obj.data('nm-stay'))
+                    attrOptions.stay = $obj.data('nm-stay');
                 if ($obj.data('nm-repeat'))
                     attrOptions.repeat = $obj.data('nm-repeat');
                 if ($obj.data('nm-scrollHorizontal'))
@@ -132,6 +134,26 @@ function makeTimeoutFunc(elemen,objOptions,launch,effect,speed) {
                                 //var effect = $obj.find('.nm-child-post').data('nm-effect');
                                 //makeTimeoutFunc($obj,launch,effect);
                             }
+                            //check if added stay animation
+                            if(objOptions.stay)
+                            {
+                                if(objOptions.speed == "normal-motion")
+                                {
+                                   var delayed = 1100;
+                                }else if(objOptions.speed == "slow-motion")
+                                {
+                                    var delayed = 5100;
+                                }else
+                                {
+                                    var delayed = 600;
+                                }
+
+                                setTimeout(function() {
+                                    $obj.removeClass(objOptions.effect); // remove class
+                                    $obj.addClass(objOptions.stay); // add stay animation
+                                },delayed);
+
+                            }
                         },objOptions.delay);
 
                     // Do the callback function. Callback wil send the jQuery object as parameter
@@ -156,7 +178,7 @@ function makeTimeoutFunc(elemen,objOptions,launch,effect,speed) {
         // On resize change the height var
         $(window).resize(function(e){
             windowSize = {height: $(window).height(), width: $(window).width()};
-            $elem.checkElements();
+            $element.checkElements();
         });
 
         // trigger inital check if elements already visible
