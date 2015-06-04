@@ -7,53 +7,64 @@
     <link href='http://fonts.googleapis.com/css?family=Roboto+Condensed:400,300' rel='stylesheet' type='text/css'>
     <!--Load Normalize css-->
     <link rel="stylesheet" href="css/normalize.css" type="text/css"/>
+    <link rel="stylesheet" href="css/ninja-motion.css" type="text/css"/>
     <link rel="stylesheet" href="css/animate.css" type="text/css"/>
     <link rel="stylesheet" href="css/demo.css" type="text/css"/>
 </head>
 <body>
     <div class="container">
-        <div class="custom-div nm-post">
+        <div class="custom-div invisibleThis nm-post">
             <div class="title-heading">
                 <h4>Default setting in Ninja Motion</h4>
                 <img src="http://dummyimage.com/400x400/d5d5d9/727273.jpg" alt=""/>
             </div>
         </div>
-        <div class="custom-div nm-post" data-nm-effect="bounceInLeft">
+        <div class="custom-div invisibleThis nm-post" data-nm-effect="bounceInLeft">
             <div class="title-heading">
                 <h4>Jump from left !</h4>
                 <img src="http://dummyimage.com/400x400/d5d5d9/727273.jpg" alt=""/>
             </div>
         </div>
-        <div class="custom-div nm-post" data-nm-effect="bounceInRight">
+
+        <div class="custom-div invisibleThis nm-post" data-nm-effect="bounceInRight" data-nm-repeat="true">
             <div class="title-heading">
-                <h4>Jump from right !</h4>
+                <h4>My Jump repeated ! just hide me and show again :)</h4>
+                <img src="http://dummyimage.com/400x400/d5d5d9/727273.jpg" alt=""/>
+            </div>
+        </div>
+        <div class="custom-div invisibleThis nm-post" data-nm-effect="lightSpeedIn" data-nm-speed="slow-motion">
+            <div class="title-heading">
+                <h4>Lets doing the slow Motion!</h4>
                 <img src="http://dummyimage.com/400x400/d5d5d9/727273.jpg" alt=""/>
             </div>
         </div>
         <div class="title-heading">
-             <h4 class="text-center">SKILL : APPEAR ! wait, let make it delay around 2 second</h4>
+             <h4 class="text-center">USING SKILL : APPEAR ! <br/>wait, still delay around 2 second :(</h4>
         </div>
-        <div class="custom-div nm-post" data-nm-effect="zoomIn" data-nm-delay="2000">
+        <div class="custom-div invisibleThis nm-post" data-nm-effect="zoomIn" data-nm-delay="2000">
             <div class="title-heading">
-                <h4>Sorry, i'll need more AGI stat :(</h4>
                 <img src="http://dummyimage.com/400x400/d5d5d9/727273.jpg" alt=""/>
+                <h4>Sorry, i'll need more AGILITY !</h4>
             </div>
         </div>
-        <div class="custom-div nm-post">
+        <div class="custom-div invisibleThis nm-post">
             <div class="title-heading">
-                <h4>Nested Animation? it is how ninja's work</h4>
+                <h4>Nested in Motion? it is how ninja's work</h4>
                 <img src="http://dummyimage.com/400x400/d5d5d9/727273.jpg" alt=""/>
-                <div class="custom-div-absolute nm-child-post" data-nm-effect="zoomIn" data-nm-launch="1500" >
+                <div class="custom-div-absolute nm-child-post" data-nm-effect="zoomIn" data-nm-launch="1000" >
                     <img src="http://dummyimage.com/200x200/000000/727273.jpg" alt=""/>
+                </div>
+                <div class="custom-div-absolute2 nm-child-post" data-nm-effect="zoomIn" data-nm-launch="1500" >
+                    <img src="http://dummyimage.com/100x100/333333/727273.jpg" alt=""/>
                 </div>
             </div>
         </div>
         <div class="custom-div">
             <div class="title-heading">
                 <h4>And become NINJA UNITY !</h4>
-                <img class="nm-post" data-nm-effect="fadeInLeft" data-nm-delay="500" src="http://dummyimage.com/200x200/d5d5d9/727273.jpg" alt=""/>
-                <img class="nm-post" data-nm-effect="fadeInDown" data-nm-delay="1000" src="http://dummyimage.com/200x200/d5d5d9/727273.jpg" alt=""/>
-                <img class="nm-post" data-nm-effect="fadeInRight" data-nm-delay="1500" src="http://dummyimage.com/200x200/d5d5d9/727273.jpg" alt=""/>
+                <img class="invisibleThis nm-post" data-nm-effect="bounceInLeft" data-nm-delay="500" src="http://dummyimage.com/200x200/d5d5d9/727273.jpg" alt=""/>
+                <img class="invisibleThis nm-post" data-nm-effect="bounceInDown" data-nm-delay="1000" src="http://dummyimage.com/200x200/d5d5d9/727273.jpg" alt=""/>
+                <img class="invisibleThis nm-post" data-nm-effect="bounceInRight" data-nm-delay="1500" src="http://dummyimage.com/200x200/d5d5d9/727273.jpg" alt=""/>
             </div>
         </div>
     </div>
@@ -62,7 +73,7 @@
 <script type="text/javascript" src="js/ninja-motion.js"></script>
     <!--Load nnMotion-->
     <script>
-        $('.nm-post').addClass("invisibleThis").nnMotion({
+        $('.nm-post').nnMotion({
             addThisClass: 'visibleThis animated',
             offset: 100,
             delay :0,

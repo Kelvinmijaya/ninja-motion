@@ -1,5 +1,9 @@
 /*Demo CSS by Kelvin Mijaya*/
-
+body
+{
+    overflow-x: hidden;
+    width: 100%;
+}
 
 .container
 {
@@ -16,7 +20,7 @@
     margin-bottom: 150px;
     position: relative;
 }
-.custom-div-absolute
+.custom-div-absolute,.custom-div-absolute2
 {
     position: absolute;
     top: 50%;
@@ -24,12 +28,18 @@
     margin-left: -100px;
     margin-top: -100px;
 }
+.custom-div-absolute2
+{
+    top: 75% !important;
+   margin-left: -50px !important;
+   margin-top: -50px !important;
+}
 
 .text-center
 {
     width: 100%;
     text-align: center;
-    padding: 50px 0;
+    padding: 50px 0 10px 0;
 }
 .title-heading
 {
@@ -37,14 +47,4 @@
     font-size: 24px;
     font-family: 'Roboto Condensed', sans-serif;
     font-weight: 300 !important;
-}
-
-/*add this css*/
-.invisibleThis
-{
-    opacity: 0;
-}
-.visibleThis
-{
-    opacity: 1;
 }

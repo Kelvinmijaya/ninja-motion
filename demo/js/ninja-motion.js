@@ -14,22 +14,24 @@
  The above copyright notice and this permission notice shall be included in all
  copies or substantial portions of the Software.
  */
-function makeTimeoutFunc($obj,launch,effect) {
+
+//define children
+function makeTimeoutFunc(elemen,objOptions,launch,effect,speed) {
     setTimeout(function(){
-        $obj.find('.nm-child-post').removeClass('invisibleThis');
-        $obj.find('.nm-child-post').addClass('visibleThis animated');
-        $obj.find('.nm-child-post').addClass(effect);
+        elemen.removeClass(objOptions.removeThisClass);
+        elemen.addClass(objOptions.addThisClass);
+        elemen.addClass(effect);
+        elemen.addClass(speed);
     },launch);
-
 }
-
 (function($){
     $.fn.nnMotion = function(defaultOptions){
         // Define options and extend with user
         var options = {
             addThisClass: 'visibleThis animated',
             removeThisClass : 'invisibleThis',
-            offset: 500,
+            speed : '',
+            offset: 200,
             delay :0,
             repeat: false,
             invertBottomOffset: true,
@@ -78,6 +80,8 @@ function makeTimeoutFunc($obj,launch,effect) {
                     attrOptions.effect = $obj.data('nm-effect');
                 if ($obj.data('nm-delay'))
                     attrOptions.delay = $obj.data('nm-delay');
+                if ($obj.data('nm-speed'))
+                    attrOptions.speed = $obj.data('nm-speed');
                 if ($obj.data('nm-repeat'))
                     attrOptions.repeat = $obj.data('nm-repeat');
                 if ($obj.data('nm-scrollHorizontal'))
@@ -107,39 +111,36 @@ function makeTimeoutFunc($obj,launch,effect) {
 
                 // Add class if in viewport
                 if ((elemStart < viewportEnd) && (elemEnd > viewportStart)){
-                    if(objOptions.delay)
-                    {
+                        //make delay
                         setTimeout(function(){
-                            $obj.removeClass(objOptions.removeThisClass);
-                            $obj.addClass(objOptions.addThisClass);
-                            $obj.addClass(objOptions.effect);
+                            $obj.removeClass(objOptions.removeThisClass); // remove class
+                            $obj.addClass(objOptions.addThisClass); // add class
+                            $obj.addClass(objOptions.effect); // add effect
+                            $obj.addClass(objOptions.speed); // add speed
+
+                            //checking if parent has child
                             if($obj.find('.nm-child-post').length != 0)
                             {
-                                var launch = $obj.find('.nm-child-post').data('nm-launch');
-                                var effect = $obj.find('.nm-child-post').data('nm-effect');
-                                makeTimeoutFunc($obj,launch,effect);
+                                //get each children
+                                $obj.find('.nm-child-post').each(function(){
+                                    var launch = $(this).data('nm-launch');
+                                    var effect = $(this).data('nm-effect');
+                                    var speed = $(this).data('nm-speed');
+                                    makeTimeoutFunc($(this),objOptions,launch,effect,speed);
+                                });
+                                //var launch = $obj.find('.nm-child-post').data('nm-launch');
+                                //var effect = $obj.find('.nm-child-post').data('nm-effect');
+                                //makeTimeoutFunc($obj,launch,effect);
                             }
                         },objOptions.delay);
-                    }else
-                    {
-                        if($obj.find('.nm-child-post').length != 0)
-                        {
-                            var launch = $obj.find('.nm-child-post').data('nm-launch');
-                            var effect = $obj.find('.nm-child-post').data('nm-effect');
-                            makeTimeoutFunc($obj,launch,effect);
-                        }
-                        // remove class
-                        $obj.removeClass(objOptions.removeThisClass);
 
-                        $obj.addClass(objOptions.addThisClass);
-                        $obj.addClass(objOptions.effect);
-                    }
                     // Do the callback function. Callback wil send the jQuery object as parameter
                     objOptions.callbackFunction($obj, "add");
 
                     // Remove class if not in viewport and repeat is true
                 } else if ($obj.hasClass(objOptions.addThisClass) && (objOptions.repeat)){
                     $obj.removeClass(objOptions.addThisClass);
+                    $obj.addClass(objOptions.removeThisClass);
 
                     // Do the callback function.
                     objOptions.callbackFunction($obj, "remove");
@@ -148,7 +149,7 @@ function makeTimeoutFunc($obj,launch,effect) {
 
         };
 
-        // Run checkelements on load and scroll
+        // Run check elements on load and scroll
         $(document).bind("touchmove MSPointerMove pointermove", this.checkElements);
         $(window).bind("load scroll touchmove", this.checkElements);
 

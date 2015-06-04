@@ -1,0 +1,58 @@
+/*
+ Version 1.0.0
+ The MIT License (MIT)
+
+ Copyright (c) 2015 Kelvin Mijaya
+
+ Permission is hereby granted, free of charge, to any person obtaining a copy of
+ this software and associated documentation files (the "Software"), to deal in
+ the Software without restriction, including without limitation the rights to
+ use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of
+ the Software, and to permit persons to whom the Software is furnished to do so,
+ subject to the following conditions:
+
+ The above copyright notice and this permission notice shall be included in all
+ copies or substantial portions of the Software.
+ */
+
+.invisibleThis
+{
+    opacity: 0;
+}
+.visibleThis
+{
+    opacity: 1;
+}
+.slow-motion
+{
+    -webkit-animation-duration: 5s !important;
+    -moz-animation-duration: 5s !important;
+    -o-animation-duration: 5s !important;
+    animation-duration: 5s !important;
+    -webkit-animation-fill-mode: both !important;
+    -moz-animation-fill-mode: both !important;
+    -o-animation-fill-mode: both !important;
+    animation-fill-mode: both !important;
+}
+.normal-motion
+{
+    -webkit-animation-duration: 1s !important;
+    -moz-animation-duration: 1s !important;
+    -o-animation-duration: 1s !important;
+    animation-duration: 1s !important;
+    -webkit-animation-fill-mode: both !important;
+    -moz-animation-fill-mode: both !important;
+    -o-animation-fill-mode: both !important;
+    animation-fill-mode: both !important;
+}
+.fast-motion
+{
+    -webkit-animation-duration: 0.5s !important;
+    -moz-animation-duration: 0.5s !important;
+    -o-animation-duration: 0.5s !important;
+    animation-duration: 0.5s !important;
+    -webkit-animation-fill-mode: both !important;
+    -moz-animation-fill-mode: both !important;
+    -o-animation-fill-mode: both !important;
+    animation-fill-mode: both !important;
+}
